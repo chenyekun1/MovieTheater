@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MovieTheater.Models
 {
     [Table("movie_country")]
-    internal sealed class MovieCountry
+    public sealed class MovieCountry
     {
         [Column("country_id")]
         [Key]

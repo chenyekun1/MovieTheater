@@ -5,3 +5,28 @@
 }
 
 <h2>电影信息管理首页</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.MovieName)</th>
+        <th>@Html.DisplayNameFor(model => model.movie_category.CategoryName)</th>
+        <th>@Html.DisplayNameFor(model => model.movie_country.CountryName)</th>
+        <th>@Html.DisplayNameFor(model => model.MovieGrade)</th>
+        <th>@Html.DisplayNameFor(model => model.MoviePrice)</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.MovieName)</td>
+                <td>@Html.DisplayFor(modelItem => item.movie_category.CategoryName)</td>
+                <td>@Html.DisplayFor(modelItem => item.movie_country.CountryName)</td>
+                <td>@Html.DisplayFor(modelItem => item.MovieGrade)</td>
+                <td>@Html.DisplayFor(modelItem => item.MoviePrice)</td>
+            </tr>
+        }
+    </tbody>
+</table>

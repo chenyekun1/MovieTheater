@@ -1,7 +1,30 @@
-@model TModel
+@model MovieTheater.Models.Movie
 
 @{
     ViewBag.Title = "电影详细信息";
 }
 
 <h2>电影详细信息</h2>
+
+<div>
+    <dl>
+        <dt>@Html.DisplayNameFor(model => model.MovieName)</dt>
+        <dd>@Html.DisplayFor(model => model.MovieName)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.movie_category.CategoryName)</dt>
+        <dd>@Html.DisplayFor(model => model.movie_country.CountryName)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.MovieActor)</dt>
+        <dd>@Html.DisplayFor(model => model.MovieActor)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.MovieDirector)</dt>
+        <dd>@Html.DisplayFor(model => model.MovieDirector)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.MovieGrade)</dt>
+        <dd>@Html.DisplayFor(model => model.MovieGrade)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.MovieDescription)</dt>
+        <dd>@Html.DisplayFor(model => model.MovieDescription)</dd>
+        
+    </dl>
+</div>

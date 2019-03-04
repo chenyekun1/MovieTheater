@@ -7,7 +7,7 @@ using System;
 
 namespace MovieTheater.Controllers
 {
-    internal sealed class BackendController : Controller
+    public sealed class BackendController : Controller
     {
         private readonly WebContext _context;
 

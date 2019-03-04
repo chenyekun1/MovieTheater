@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MovieTheater.Data
 {
-    internal sealed class WebContext : DbContext
+    public sealed class WebContext : DbContext
     {
         public WebContext(DbContextOptions<WebContext> options) : base(options)
         {

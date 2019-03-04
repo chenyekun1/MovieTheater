@@ -6,13 +6,14 @@ using System.Linq;
 
 namespace MovieTheater.Controllers
 {
-    internal sealed class MovieController : Controller
+    public sealed class MovieController : Controller
     {
         private readonly WebContext _context;
 
         public
         MovieController(WebContext context) => _context = context;
 
+        [HttpGet]
         public async Task<IActionResult>
         Index(string sortOrder, string searchString)
         {

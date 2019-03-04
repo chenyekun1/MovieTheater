@@ -2,29 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MovieTheater.Models;
-using MovieTheater.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace MovieTheater.Controllers
 {
-
-    internal sealed class MovieController : Controller
-    {
-        private readonly WebContext _context;
-
-        public MovieController(WebContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Movies.ToListAsync());
-        }
-    }
 
     public class HomeController : Controller
     {

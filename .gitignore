@@ -338,3 +338,4 @@ ASALocalRun/
 .DS_Store
 *.db
 .idea
+Migrations/

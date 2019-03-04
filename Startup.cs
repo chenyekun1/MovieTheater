@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using MovieTheater.Data;
 
 namespace MovieTheater
 {
@@ -32,7 +33,11 @@ namespace MovieTheater
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddDbContext<WebContext>(options =>
+                                              options.UseSqlite(
+                                              Configuration.
+                                              GetConnectionString("DefaultConnection")));
+                                              
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

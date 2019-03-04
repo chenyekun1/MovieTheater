@@ -3,18 +3,22 @@ using Microsoft.AspNetCore.Mvc;
 using MovieTheater.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System;
 
 namespace MovieTheater.Controllers
 {
-    internal sealed class MovieController : Controller
+    internal sealed class BackendController : Controller
     {
         private readonly WebContext _context;
 
         public
-        MovieController(WebContext context) => _context = context;
+        BackendController(WebContext context) => _context = context;
+
+        public IActionResult
+        Index() => View();
 
         public async Task<IActionResult>
-        Index(string sortOrder, string searchString)
+        MovieManageIndex(string sortOrder, string searchString)
         {
             ViewData["NameSortParm"]  = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["GradeSortParm"] = sortOrder == "Grade" ? "grade_desc" : "grade";
@@ -51,7 +55,20 @@ namespace MovieTheater.Controllers
         }
 
         public async Task<IActionResult>
-        Details(int? id)
+        MovieEdit(int? id)
+        {
+            if (id == null)    return NotFound();
+            
+            var movie = await _context.Movies.Include(m => m.movie_category)
+                                             .Include(m => m.movie_country)
+                                      .SingleOrDefaultAsync(m => m.MovieId == id);
+
+            if (movie == null) return NotFound();
+            return View(movie);
+        }
+
+        public async Task<IActionResult>
+        MovieDetails(int? id)
         {
             if (id == null)    return NotFound();
             
@@ -63,5 +80,26 @@ namespace MovieTheater.Controllers
             if (movie == null) return NotFound();
             return View(movie);
         }
+    
+        public async Task<IActionResult>
+        MovieDelete(int? id, bool? saveChangesError = false)
+        {
+            if (id == null)    return NotFound();
+
+            var movie = await _context.Movies
+                                      .AsNoTracking()
+                                      .SingleOrDefaultAsync(m => m.MovieId == id);
+
+            if (movie == null) return NotFound();
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] =
+                "Delete failed. Try again, and if the problem persists " +
+                "see your system administrator.";
+            }
+            throw new NotImplementedException();
+        }
+ 
     }
 }

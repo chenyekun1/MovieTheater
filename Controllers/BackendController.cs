@@ -177,8 +177,7 @@ namespace MovieTheater.Controllers
                 "see your system administrator.";
             }
 
-            throw new NotImplementedException();
-            //return View(movie);
+            return View(movie);
         }
 
 
@@ -197,6 +196,24 @@ namespace MovieTheater.Controllers
 
             HttpContext.Session.SetString("user_group", "admin");
             return RedirectToAction("Index", "Backend");
+        }
+    
+        public async Task<IActionResult>
+        DeleteConfirm(int id)
+        {
+            var movie = await _context.Movies.AsNoTracking()
+                                             .SingleOrDefaultAsync(m => m.MovieId == id);
+            if (movie == null) return RedirectToAction(nameof(MovieManageIndex));
+
+            try
+            {
+                _context.Movies.Remove(movie);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(MovieManageIndex));
+            } catch (DbUpdateException)
+            {
+                return RedirectToAction(nameof(MovieDelete), new {id = id});
+            }
         }
     }
 }

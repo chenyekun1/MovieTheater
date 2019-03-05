@@ -260,3 +260,67 @@ a:hover{
     border-radius:20px;
     font-size:20px;
 }
+
+/*榜单页样式S*/
+.bitem{
+    width:100%;
+    height:260px;
+    position:relative;
+    margin:0;
+}
+.bitem .bitem_i2{
+    color:white;
+    background-color:rgb(255, 180, 0);
+}
+.bitem>i{
+    position:relative;
+    top:125px;
+    width:50px;
+    height:50px;
+    display:inline-block;
+    text-align:center;
+    line-height:50px;
+    font-weight:900;
+    font-size:25px;
+    color:rgb(164, 164, 164);
+    background-color:rgb(221, 221, 221);
+}
+.bitem img{
+    position:absolute;
+    top:40px;
+    margin-left:50px;
+}
+.b_con{
+    position:absolute;
+    top:90px;
+    left:300px;
+    width:900px;
+    height:169px;
+    border-bottom:1px solid rgb(204, 204, 204);
+}
+.b_l{
+    width:50%;
+    display:inline-block;
+}
+.b_l a:first-child{
+    text-decoration:none;
+    font-size:37px;
+    color:black;
+    margin:0;
+}
+.b_r{
+    display:inline-block;
+    margin-left:360px;
+    color:rgb(255, 242, 0);
+}
+.b_r i:first-child{
+    color:rgb(255, 180, 0);
+    font-size:60px;
+    font-weight:900;
+}
+.b_r i:nth-child(2){
+    font-size:30px;
+    font-weight:900;
+    color:rgb(255, 180, 0);
+}
+/*榜单页样式E*/

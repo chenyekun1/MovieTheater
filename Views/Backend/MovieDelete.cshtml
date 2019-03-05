@@ -1,0 +1,37 @@
+@model MovieTheater.Models.Movie;
+
+@{
+    ViewBag.Title = "删除电影";
+}
+
+<h2>删除电影</h2>
+
+<div>
+    <dl>
+        <dt>@Html.DisplayNameFor(model => model.MovieName)</dt>
+        <dd>@Html.DisplayFor(model => model.MovieName)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.movie_category.CategoryName)</dt>
+        <dd>@Html.DisplayFor(model => model.movie_country.CountryName)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.MovieActor)</dt>
+        <dd>@Html.DisplayFor(model => model.MovieActor)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.MovieDirector)</dt>
+        <dd>@Html.DisplayFor(model => model.MovieDirector)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.MovieGrade)</dt>
+        <dd>@Html.DisplayFor(model => model.MovieGrade)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.MovieDescription)</dt>
+        <dd>@Html.DisplayFor(model => model.MovieDescription)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.MovieImg)</dt>
+        <dd>@Html.DisplayFor(model => model.MovieImg)</dd>
+        
+        <dt>@Html.DisplayNameFor(model => model.MoviePrice)</dt>
+        <dd>@Html.DisplayFor(model => model.MoviePrice)</dd>
+    </dl>
+    
+    <a asp-action="DeleteConfirm" asp-route-id="@Model.MovieId">确认删除</a>
+</div>

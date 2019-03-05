@@ -1,0 +1,28 @@
+﻿@model IEnumerable<MovieTheater.Models.Movie>
+
+<div class="content">
+    <dl class="content">
+        @{
+            int i = 0;
+        }
+        @foreach (var item in Model)
+        {
+            i++;
+            <dd class="bitem">
+                <i class="bitem_i2">@i</i>
+                <a asp-action="Details" asp-controller="Movie" asp-route-id="@item.MovieId">
+                    <img src="/images/@item.MovieImg"/>
+                </a>
+                <div class="b_con">
+                    <div class="b_l">
+                        <a asp-action="Details" asp-controller="Movie" asp-route-id="@item.MovieId">@item.MovieName</a>
+                        <p>上映时间：2018-02-16</p>
+                    </div>
+                    <div class="b_r">
+                        <i class="i_score">@item.MovieGrade</i>
+                    </div>
+                </div>
+            </dd>
+        }
+    </dl>
+</div>

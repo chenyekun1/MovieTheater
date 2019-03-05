@@ -22,8 +22,13 @@ namespace MovieTheater.Controllers
             ViewData["GradeSortParm"] = sortOrder == "Grade" ? "grade_desc" : "grade";
             ViewData["CurrentFilter"] = searchString;
 
-            var movies = from s in _context.Movies
-                         select s;
+            var movies = _context.Movies
+                                 .Include(m => m.movie_category)
+                                 .Include(m => m.movie_country)
+                                 .AsNoTracking();
+            
+            ViewBag.movieCategory = await _context.MovieCategories.ToListAsync();
+            ViewBag.movieCountry  = await _context.MovieCountries.ToListAsync();
 
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -49,7 +54,7 @@ namespace MovieTheater.Controllers
                     break;
             }
 
-            return View(await movies.AsNoTracking().ToListAsync());
+            return View(await movies.ToListAsync());
         }
 
         public async Task<IActionResult>

@@ -1,0 +1,50 @@
+@model MovieTheater.Models.Movie;
+
+@{
+    ViewBag.Title = "新建电影";
+}
+
+<h2>新建电影</h2>
+
+<hr/>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MovieName" class="control-label"></label>
+                <input asp-for="MovieName" class="form-control" />
+                <span asp-validation-for="MovieName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieActor" class="control-label"></label>
+                <input asp-for="MovieActor" class="form-control" />
+                <span asp-validation-for="MovieActor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieDirector" class="control-label"></label>
+                <input asp-for="MovieDirector" class="form-control" />
+                <span asp-validation-for="MovieDirector" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoviePrice" class="control-label"></label>
+                <input asp-for="MoviePrice" class="form-control" />
+                <span asp-validation-for="MoviePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieDescription" class="control-label"></label>
+                <input asp-for="MovieDescription" class="form-control" />
+                <span asp-validation-for="MovieDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieGrade" class="control-label"></label>
+                <input asp-for="MovieGrade" class="form-control" />
+                <span asp-validation-for="MovieGrade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="确认" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>

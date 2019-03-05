@@ -2,24 +2,38 @@
 
 <div class="fliter">
         <div class="f1">
-            <div>类型:</div>
+            <span>类型：</span>
+            <ul>
+                @foreach (var elem in ViewBag.movieCategory)
+                {
+                    <li><a href="#">@elem.CategoryName</a></li>
+                }
+            </ul>
         </div>
         <div class="f1">
-            <div>国家:</div>
+            <div>
+                <span>国家:</span>
+                <ul>
+                    @foreach (var elem in ViewBag.movieCountry)
+                    {
+                        <li><a href="#">@elem.CountryName</a></li>
+                    }
+                </ul>
+            </div>
         </div>
-    </div>
+</div>
 
-    <div class="movies">
-        <dl class="movies-list">
-            @foreach (var item in Model)
-            {
-                <dd>
-                    <div class="movies-poster">
-                        <a><img src="/Images/@item.MovieImg"></a>
-                    </div>
-                    <div class="movies-name"><a>@item.MovieName</a></div>
-                    <div class="movies-rate">@item.MovieGrade</div>
-                </dd>
-            }
-        </dl>
-    </div>
+<div class="movies">
+    <dl class="movies-list">
+        @foreach (var item in Model)
+        {
+            <dd>
+                <div class="movies-poster">
+                    <a asp-action="Details" asp-route-id="@item.MovieId"><img src="/images/@item.MovieImg"></a>
+                </div>
+                <div class="movies-name"><a asp-action="Details" asp-route-id="@item.MovieId">@item.MovieName</a></div>
+                <div class="movies-rate">@item.MovieGrade</div>
+            </dd>
+        }
+    </dl>
+</div>

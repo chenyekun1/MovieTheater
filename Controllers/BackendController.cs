@@ -6,6 +6,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Session;
 using System;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MovieTheater.Controllers
 {
@@ -18,6 +19,14 @@ namespace MovieTheater.Controllers
 
         public IActionResult
         Index() => View();
+
+        public IActionResult
+        Create()
+        {
+            ViewBag.movie_category_id = new SelectList(_context.MovieCategories, "CategoryId", "CategoryName");
+            ViewBag.movie_country_id  = new SelectList(_context.MovieCountries, "CountryId", "CountryName");
+            return View();
+        }
 
         public async Task<IActionResult>
         MovieManageIndex(string sortOrder, string searchString)

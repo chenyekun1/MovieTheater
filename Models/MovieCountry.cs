@@ -9,10 +9,12 @@ namespace MovieTheater.Models
     {
         [Column("country_id")]
         [Key]
+        [Display(Name = "地区ID")]
         public int CountryId { get; set; }
 
         [Column("country_name")]
         [MaxLength(50)]
+        [Display(Name = "地区")]
         public string CountryName { get; set; }
 
         public ICollection<Movie> movies { get; set; }

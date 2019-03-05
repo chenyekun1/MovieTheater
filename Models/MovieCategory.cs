@@ -9,10 +9,12 @@ namespace MovieTheater.Models
     {
         [Key]
         [Column("category_id")]
+        [Display(Name = "类别ID")]
         public int CategoryId { get; set; }
 
         [Column("category_name")]
         [MaxLength(50)]
+        [Display(Name = "类别")]
         public string CategoryName { get; set; }
 
         public ICollection<Movie> movies { get; set; }

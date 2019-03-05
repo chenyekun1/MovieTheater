@@ -26,8 +26,10 @@ namespace MovieTheater.Controllers
             ViewData["GradeSortParm"] = sortOrder == "Grade" ? "grade_desc" : "grade";
             ViewData["CurrentFilter"] = searchString;
 
-            var movies = from s in _context.Movies
-                         select s;
+            var movies = _context.Movies
+                                 .Include(m => m.movie_category)
+                                 .Include(m => m.movie_country)
+                                 .AsNoTracking();
 
             if (!string.IsNullOrEmpty(searchString))
             {

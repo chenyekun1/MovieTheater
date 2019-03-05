@@ -63,6 +63,10 @@ namespace MovieTheater.Controllers
         public async Task<IActionResult>
         MovieManageIndex(string sortOrder, string searchString)
         {
+
+            if (HttpContext.Session.GetString("user_group") != "admin")
+                return RedirectToAction(nameof(Index));
+
             ViewData["NameSortParm"]  = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["GradeSortParm"] = sortOrder == "Grade" ? "grade_desc" : "grade";
             ViewData["CurrentFilter"] = searchString;
@@ -184,6 +188,7 @@ namespace MovieTheater.Controllers
         public IActionResult
         ALogin() => View();
 
+        [HttpPost]
         public async Task<IActionResult>
         ALogin(string uid, string pwd)
         {

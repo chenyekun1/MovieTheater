@@ -1,3 +1,25 @@
-<h1>
-    sss
-</h1>
+@model IEnumerable<MovieTheater.Models.Movie>
+
+<div class="fliter">
+        <div class="f1">
+            <div>类型:</div>
+        </div>
+        <div class="f1">
+            <div>国家:</div>
+        </div>
+    </div>
+
+    <div class="movies">
+        <dl class="movies-list">
+            @foreach (var item in Model)
+            {
+                <dd>
+                    <div class="movies-poster">
+                        <a><img src="@item.MovieImg"></a>
+                    </div>
+                    <div class="movies-name"><a>@item.MovieName</a></div>
+                    <div class="movies-rate">@item.MovieGrade</div>
+                </dd>
+            }
+        </dl>
+    </div>

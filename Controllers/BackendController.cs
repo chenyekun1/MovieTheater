@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using MovieTheater.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Session;
 using System;
 
 namespace MovieTheater.Controllers
@@ -100,6 +102,23 @@ namespace MovieTheater.Controllers
             }
             throw new NotImplementedException();
         }
- 
+
+
+        public IActionResult
+        ALogin() => View();
+
+        public async Task<IActionResult>
+        ALogin(string uid, string pwd)
+        {
+            var user = await _context.Admins
+                                     .FirstOrDefaultAsync(a => a.AdminName.Equals(uid) &&
+                                                               a.AdminPwd.Equals(pwd));
+            
+            // Log in fault
+            if (user == null) return View();
+
+            HttpContext.Session.SetString("user_group", "admin");
+            return RedirectToAction("Index", "Backend");
+        }
     }
 }

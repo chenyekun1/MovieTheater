@@ -6,25 +6,68 @@
 
 <h2>电影详细信息</h2>
 
-<div>
-    <dl>
-        <dt>@Html.DisplayNameFor(model => model.MovieName)</dt>
-        <dd>@Html.DisplayFor(model => model.MovieName)</dd>
-        
-        <dt>@Html.DisplayNameFor(model => model.movie_category.CategoryName)</dt>
-        <dd>@Html.DisplayFor(model => model.movie_country.CountryName)</dd>
-        
-        <dt>@Html.DisplayNameFor(model => model.MovieActor)</dt>
-        <dd>@Html.DisplayFor(model => model.MovieActor)</dd>
-        
-        <dt>@Html.DisplayNameFor(model => model.MovieDirector)</dt>
-        <dd>@Html.DisplayFor(model => model.MovieDirector)</dd>
-        
-        <dt>@Html.DisplayNameFor(model => model.MovieGrade)</dt>
-        <dd>@Html.DisplayFor(model => model.MovieGrade)</dd>
-        
-        <dt>@Html.DisplayNameFor(model => model.MovieDescription)</dt>
-        <dd>@Html.DisplayFor(model => model.MovieDescription)</dd>
-        
-    </dl>
-</div>
+<!--上部S-->
+    <div class="banner">
+        <!--图片-->
+        <img src="movie_img" />
+        <!--右侧详情-->
+        <div class="banner_r">
+            <!--信息-->
+            <div class="r_det">
+                <p>movie_name</p>
+                <p>movie_director</p>
+                <p>movie_actor</p>
+                <p>movie_price</p>
+                <p>movie_category_id</p>
+                <p>movie_country_id</p>
+            </div>
+
+            <!--按钮-->
+            <div class="r_btn">
+                <a>想看</a>
+                <a>评分</a>
+                <a>特惠购票</a>
+            </div>
+
+            <!--评分票房-->
+            <div class="r_score">
+                <p>用户评价</p>
+                <span class="ss">movie_grade</span><!--数字评分-->
+                <div class="score">
+                    <div class="score_bg1"><div class="score_bg2"></div></div><!--星星评分-->
+                    <span></span>
+                </div>
+                <span class="ss1">累计票房</span>
+                <span class="ss2"></span>
+                <span>亿</span>
+            </div>
+        </div>
+    </div>
+    <!--上部E-->
+
+    <!--下部S-->
+    <div class="con">
+        <!--左侧介绍S-->
+        <div class="con_l">
+            <div>介绍</div>
+            <div>movie_description</div>
+        </div>
+        <!--左侧介绍E-->
+
+        <!--左侧介绍S-->
+        <div class="con_l">
+            <div>演职人员</div>
+            <div></div>
+        </div>
+        <!--左侧介绍E-->
+
+        <!--右侧S-->
+        <div class="con_r">
+            <!--相关电影-->
+            <div class="ifo">
+                <h3>相关电影</h3>
+            </div>
+        </div>
+        <!--右侧E-->
+    </div>
+    <!--下部E-->

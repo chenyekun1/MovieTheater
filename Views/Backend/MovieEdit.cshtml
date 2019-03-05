@@ -49,6 +49,15 @@
                 <span asp-validation-for="MoviePrice" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="MovieCategoryId" class="control-label"></label>
+                <select asp-for="MovieCategoryId" asp-items="@(new SelectList(ViewBag.movieCategory, "CategoryId", "CategoryName"))"></select>
+                <span asp-validation-for="MovieCategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieCountryId" class="control-label"></label>
+                <select asp-for="MovieCountryId" asp-items="@(new SelectList(ViewBag.movieCountry, "CountryId", "CountryName"))"></select>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="确认" class="btn btn-default" />
             </div>
         </form>

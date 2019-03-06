@@ -1,0 +1,27 @@
+@model IEnumerable<MovieTheater.Models.MovieCountry>
+
+@{
+    ViewBag.Title = "地区管理";
+}
+
+<h2>地区管理</h2>
+
+<p><a asp-action="CreateCountry">新建地区</a></p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.CountryId)</td>
+        <td>@Html.DisplayNameFor(model => model.CountryName)</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.CountryId)</td>
+            <td>@Html.DisplayFor(mdoelItem => item.CountryName)</td>
+        </tr>
+    }
+    </tbody>
+</table>

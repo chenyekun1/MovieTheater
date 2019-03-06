@@ -16,6 +16,35 @@ namespace MovieTheater.DataPrepare
                 Console.WriteLine("The Database is not empty!");
                 return;
             }
+
+            if (context.MovieCategories.Count() == 0)
+            {
+                var categories = new MovieCategory[]
+                {
+                    new MovieCategory{CategoryName = "动作"},
+                    new MovieCategory{CategoryName = "冒险"},
+                    new MovieCategory{CategoryName = "娱乐"},
+                };
+                foreach (var category in categories)
+                {
+                    context.MovieCategories.Add(category);
+                }
+                context.SaveChanges();
+            }
+
+            if (context.MovieCountries.Count() == 0)
+            {
+                var countries = new MovieCountry[]
+                {
+                    new MovieCountry{CountryName = "中国"},
+                    new MovieCountry{CountryName = "美国"},
+                };
+                foreach (var country in countries)
+                {
+                    context.MovieCountries.Add(country);
+                }
+                context.SaveChanges();
+            }
                 
             var movies = new Movie[]
                 {

@@ -19,7 +19,12 @@ namespace MovieTheater.Controllers
         BackendController(WebContext context) => _context = context;
 
         public IActionResult
-        Index() => View();
+        Index()
+        {
+            if (!HttpContext.Session.GetString("user_group").Equals("admin"))
+                return RedirectToAction("Index", "Home");
+            return View();
+        }
 
         public IActionResult
         Create()
@@ -219,6 +224,89 @@ namespace MovieTheater.Controllers
             {
                 return RedirectToAction(nameof(MovieDelete), new {id = id});
             }
+        }
+    
+        public async Task<IActionResult>
+        CategoryManageIndex()
+        {
+            if (!HttpContext.Session.GetString("user_group").Equals("admin"))
+                return RedirectToAction("Index", "Home");
+            return View(await _context.MovieCategories
+                                      .AsNoTracking()
+                                      .ToListAsync());
+        }
+
+        public IActionResult
+        CreateCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>
+        CreateCategory(int id,
+                       [Bind("CategoryId,CategoryName")] MovieCategory category)
+        {
+            if (id != category.CategoryId)
+                return NotFound();
+            
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _context.AddAsync(category);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(CategoryManageIndex));
+                } catch (Exception)
+                {
+                    Console.WriteLine("Category Create Error.");
+                    throw;
+                }
+            }
+            return View(category);
+        }
+
+        public async Task<IActionResult>
+        CountryManageIndex()
+        {
+            if (!HttpContext.Session.GetString("user_group").Equals("admin"))
+                return RedirectToAction("Index", "Home");
+            return View(await _context.MovieCountries
+                                      .AsNoTracking()
+                                      .ToListAsync());
+        }
+    
+        public IActionResult
+        CreateCountry()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>
+        CreateCountry(int id,
+                      [Bind("CountryId,CountryName")] MovieCountry country)
+        {
+            if (id != country.CountryId)
+                return NotFound();
+            
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _context.AddAsync(country);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(CountryManageIndex));
+                } catch (Exception)
+                {
+                    Console.WriteLine("Create Country error.");
+                    throw;
+                }
+            }
+
+            return View(country);
         }
     }
 }

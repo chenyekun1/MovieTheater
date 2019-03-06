@@ -1,0 +1,27 @@
+@model IEnumerable<MovieTheater.Models.MovieCategory>
+
+@{
+    ViewBag.Title = "类别管理";
+}
+
+<h2>类别管理</h2>
+
+<p><a asp-action="CreateCategory">新建</a></p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.CategoryId)</td>
+        <td>@Html.DisplayNameFor(model => model.CategoryName)</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.CategoryId)</td>
+            <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+        </tr>
+    }
+    </tbody>
+</table>

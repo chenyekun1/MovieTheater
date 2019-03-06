@@ -2,11 +2,13 @@
 
 <div class="fliter">
         <div class="f1">
-            <span>类型：</span>
+            <span>类型:</span>
             <ul>
                 @foreach (var elem in ViewBag.movieCategory)
                 {
-                    <li><a href="#">@elem.CategoryName</a></li>
+                    <li><a asp-action="Index"
+                           asp-route-searchCategoryString="@elem.CategoryName"
+                           asp-route-searchCountryString="@ViewData["CurrentCountryFilter"]">@elem.CategoryName</a></li>
                 }
             </ul>
         </div>
@@ -16,7 +18,9 @@
                 <ul>
                     @foreach (var elem in ViewBag.movieCountry)
                     {
-                        <li><a href="#">@elem.CountryName</a></li>
+                        <li><a asp-action="Index"
+                               asp-route-searchCountryString="@elem.CountryName"
+                               asp-route-searchCategoryString="@ViewData["CurrentCategoryFilter"]">@elem.CountryName</a></li>
                     }
                 </ul>
             </div>

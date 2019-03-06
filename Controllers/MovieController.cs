@@ -16,11 +16,12 @@ namespace MovieTheater.Controllers
 
         [HttpGet]
         public async Task<IActionResult>
-        Index(string sortOrder, string searchString)
+        Index(string sortOrder, string searchCategoryString, string searchCountryString)
         {
             ViewData["NameSortParm"]  = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["GradeSortParm"] = sortOrder == "Grade" ? "grade_desc" : "grade";
-            ViewData["CurrentFilter"] = searchString;
+            ViewData["CurrentCategoryFilter"] = searchCategoryString;
+            ViewData["CurrentCountryFilter"]  = searchCountryString;
 
             var movies = _context.Movies
                                  .Include(m => m.movie_category)
@@ -30,12 +31,15 @@ namespace MovieTheater.Controllers
             ViewBag.movieCategory = await _context.MovieCategories.ToListAsync();
             ViewBag.movieCountry  = await _context.MovieCountries.ToListAsync();
 
-            if (!string.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(searchCategoryString))
             {
-                movies = movies.Where(m => m.MovieName.Contains(searchString) ||
-                                           m.MovieDescription.Contains(searchString) ||
-                                           m.MovieDirector.Contains(searchString) ||
-                                           m.MovieActor.Contains(searchString));
+                movies = movies.Where(m => m.movie_category.CategoryName
+                                                           .Equals(searchCategoryString));
+            }
+            if (!string.IsNullOrEmpty(searchCountryString))
+            {
+                movies = movies.Where(m => m.movie_country.CountryName
+                                                          .Equals(searchCountryString));
             }
 
             switch (sortOrder)

@@ -49,6 +49,7 @@ namespace MovieTheater.Models
         public Nullable<int> MovieCountryId { get; set; }
 
         [Column("movie_img")]
+        [Display(Name = "电影海报")]
         public string MovieImg { get; set; }
 
         public MovieCategory movie_category { get; set; }

@@ -145,7 +145,7 @@ namespace MovieTheater.Controllers
             {
                 _context.Update(movie);
                 await _context.SaveChangesAsync();
-            } catch (Exception ex)
+            } catch (Exception)
             {
                 if (!_context.Movies.Any(m => m.MovieId == movie.MovieId)) return NotFound();
                 else                                                       throw;

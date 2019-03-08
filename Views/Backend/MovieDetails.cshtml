@@ -12,6 +12,9 @@
         <dd>@Html.DisplayFor(model => model.MovieName)</dd>
         
         <dt>@Html.DisplayNameFor(model => model.movie_category.CategoryName)</dt>
+        <dd>@Html.DisplayFor(model => model.movie_category.CategoryName)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.movie_country.CountryName)</dt>
         <dd>@Html.DisplayFor(model => model.movie_country.CountryName)</dd>
         
         <dt>@Html.DisplayNameFor(model => model.MovieActor)</dt>
@@ -27,7 +30,7 @@
         <dd>@Html.DisplayFor(model => model.MovieDescription)</dd>
         
         <dt>@Html.DisplayNameFor(model => model.MovieImg)</dt>
-        <dd>@Html.DisplayFor(model => model.MovieImg)</dd>
+        <dd><img src="/images/@Model.MovieImg"></dd>
         
         <dt>@Html.DisplayNameFor(model => model.MoviePrice)</dt>
         <dd>@Html.DisplayFor(model => model.MoviePrice)</dd>

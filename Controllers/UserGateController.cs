@@ -4,6 +4,7 @@ using MovieTheater.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using System;
+using MovieTheater.Models;
 
 namespace MovieTheater.Controllers
 {
@@ -24,6 +25,7 @@ namespace MovieTheater.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult>
         ALogin(string uid, string pwd)
         {
@@ -62,6 +64,36 @@ namespace MovieTheater.Controllers
             HttpContext.Session.SetInt32("user_id", user.CustomerId);
             
             return RedirectToAction("Index", "Home");
+        }
+    
+        public IActionResult
+        CusSignOn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult>
+        CusSignOn(int id,
+                  [Bind("CustomerName,CustomerPwd")]
+                  Customer customer)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Add(customer);
+                    await _context.SaveChangesAsync();
+                    
+                    return RedirectToAction("Index", "Home");
+                }
+            } catch (Exception)
+            {
+                Console.WriteLine("User Create Error.");
+                throw;
+            }
+            return View(customer);
         }
     }
 }

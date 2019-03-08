@@ -21,9 +21,12 @@ namespace MovieTheater.Controllers
         public IActionResult
         Index()
         {
-            if (!HttpContext.Session.GetString("user_group").Equals("admin"))
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("user_group")))
                 return RedirectToAction("ALogin", "UserGate");
-            return View();
+            if (HttpContext.Session.GetString("user_group").Equals("admin"))
+                return View();
+            else
+                return RedirectToAction("ALogin", "UserGate");
         }
 
         public IActionResult

@@ -13,8 +13,15 @@ namespace MovieTheater.DataPrepare
 
             if (context.Customers.Count() == 0)
             {
-                var cus = new Customer {CustomerName = "chen", CustomerPwd = "1234"};
+                var cus = new Customer { CustomerName = "chen", CustomerPwd = "1234" };
                 context.Customers.Add(cus);
+                context.SaveChanges();
+            }
+
+            if (context.Admins.Count() == 0)
+            {
+                var admin = new Admin { AdminName = "admin", AdminPwd = "1234" };
+                context.Admins.Add(admin);
                 context.SaveChanges();
             }
 

@@ -22,7 +22,7 @@ namespace MovieTheater.Controllers
         Index()
         {
             if (!HttpContext.Session.GetString("user_group").Equals("admin"))
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ALogin", "UserGate");
             return View();
         }
 
@@ -187,33 +187,6 @@ namespace MovieTheater.Controllers
             }
 
             return View(movie);
-        }
-
-
-        public IActionResult
-        ALogin()
-        {
-            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("user_group")) && 
-                 HttpContext.Session.GetString("user_group").Equals("admin"))
-                return RedirectToAction(nameof(Index));
-            
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult>
-        ALogin(string uid, string pwd)
-        {
-            
-            var user = await _context.Admins
-                                     .FirstOrDefaultAsync(a => a.AdminName.Equals(uid) &&
-                                                               a.AdminPwd.Equals(pwd));
-            
-            // Log in fault
-            if (user == null) return View();
-
-            HttpContext.Session.SetString("user_group", "admin");
-            return RedirectToAction("Index", "Backend");
         }
     
         public async Task<IActionResult>

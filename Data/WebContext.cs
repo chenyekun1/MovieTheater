@@ -13,5 +13,7 @@ namespace MovieTheater.Data
         public DbSet<Movie> Movies { get; set; }
         public DbSet<MovieCategory> MovieCategories { get; set; }
         public DbSet<MovieCountry> MovieCountries { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Customer> Customers { get; set; }
     }
 }

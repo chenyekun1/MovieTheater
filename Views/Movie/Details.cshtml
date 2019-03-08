@@ -1,31 +1,29 @@
-@model MovieTheater.Models.Movie
+@model MovieTheater.ViewModel.MovieDetailsViewModel
 
 @{
     ViewBag.Title = "电影详细信息";
 }
 
-<h2>电影详细信息</h2>
-
 <!--上部S-->
 <div class="banner">
     <!--图片-->
-    <img src="/images/@Model.MovieImg" />
+    <img src="/images/@Model.Movie.MovieImg" />
     <!--右侧详情-->
     <div class="banner_r">
         <!--信息-->
         <div class="r_det">
-            <p>@Html.DisplayNameFor(model => model.MovieName) : @Html.DisplayFor(model => model.MovieName)</p>
-            <p>@Html.DisplayNameFor(model => model.MovieDirector) : @Html.DisplayFor(model => model.MovieDirector)</p>
-            <p>@Html.DisplayNameFor(model => model.MovieActor) : @Html.DisplayFor(model => model.MovieActor)</p>
-            <p>@Html.DisplayNameFor(model => model.MoviePrice) : @Html.DisplayFor(model => model.MoviePrice)</p>
-            <p>@Html.DisplayNameFor(model => model.movie_category.CategoryName) : @Html.DisplayFor(model => model.movie_category.CategoryName)</p>
-            <p>@Html.DisplayNameFor(model => model.movie_country.CountryName) : @Html.DisplayFor(model => model.movie_country.CountryName)</p>
+            <p>@Html.DisplayFor(model => model.Movie.MovieName)</p>
+            <p>@Html.DisplayNameFor(model => model.Movie.MovieDirector) : @Html.DisplayFor(model => model.Movie.MovieDirector)</p>
+            <p>@Html.DisplayNameFor(model => model.Movie.MovieActor) : @Html.DisplayFor(model => model.Movie.MovieActor)</p>
+            <p>@Html.DisplayNameFor(model => model.Movie.MoviePrice) : @Html.DisplayFor(model => model.Movie.MoviePrice)</p>
+            <p>@Html.DisplayNameFor(model => model.Movie.movie_category.CategoryName) : @Html.DisplayFor(model => model.Movie.movie_category.CategoryName)</p>
+            <p>@Html.DisplayNameFor(model => model.Movie.movie_country.CountryName) : @Html.DisplayFor(model => model.Movie.movie_country.CountryName)</p>
         </div>
 
         <!--评分票房-->
         <div class="r_score">
             <p>用户评价</p>
-            <span class="ss">@Html.DisplayFor(model => model.MovieGrade)</span><!--数字评分-->
+            <span class="ss">@Html.DisplayFor(model => model.Movie.MovieGrade)</span><!--数字评分-->
             <div class="score">
                 <div class="score_bg1"><div class="score_bg2"></div></div><!--星星评分-->
                 <span></span>
@@ -43,7 +41,7 @@
     <!--左侧介绍S-->
     <div class="con_l">
         <div>介绍</div>
-        <div>@Html.DisplayFor(model => model.MovieDescription)</div>
+        <div>@Html.DisplayFor(model => model.Movie.MovieDescription)</div>
     </div>
     <!--左侧介绍E-->
 

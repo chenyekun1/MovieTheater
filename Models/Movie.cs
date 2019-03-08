@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -54,5 +55,6 @@ namespace MovieTheater.Models
 
         public MovieCategory movie_category { get; set; }
         public MovieCountry movie_country { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

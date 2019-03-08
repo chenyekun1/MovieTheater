@@ -4,6 +4,9 @@ using MovieTheater.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System;
+using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Http;
+using MovieTheater.ViewModel;
 
 namespace MovieTheater.Controllers
 {
@@ -71,8 +74,16 @@ namespace MovieTheater.Controllers
                                       .AsNoTracking()
                                       .SingleOrDefaultAsync(m => m.MovieId == id);
 
+            var customer = await _context.Customers
+                                         .SingleOrDefaultAsync(c => 
+                                                               c.CustomerId == HttpContext.Session
+                                                                                          .GetInt32("user_id"));
+            
+            var movieDetailsViewModel = new MovieDetailsViewModel(_context, customer, movie);
+            movieDetailsViewModel.LoadComments();
+
             if (movie == null) return NotFound();
-            return View(movie);
+            return View(movieDetailsViewModel);
         }
     }
 }

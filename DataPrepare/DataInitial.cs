@@ -236,77 +236,77 @@ namespace MovieTheater.DataPrepare
             {
                 var comments = new Comment[]
                 {
-                    new Comment {CommentId = 1,
+                    new Comment {CustomerId = 1,
                     CommentDate = DateTime.Parse("2005-11-05 13:21:25"),
                     MovieId = 1,
                     CommentContext = "好看 太帅了"},
 
-                    new Comment {CommentId = 1,
+                    new Comment {CustomerId = 1,
                     CommentDate = DateTime.Parse("2005-11-05 14:12:12"),
                     MovieId = 2,
                     CommentContext = "主题曲很好听！！"},
 
-                    new Comment {CommentId = 2,
+                    new Comment {CustomerId = 2,
                     CommentDate = DateTime.Parse("2005-11-05 14:17:08"),
                     MovieId = 1,
                     CommentContext = "最后居然没有彩蛋！！"},
 
-                    new Comment {CommentId = 2,
+                    new Comment {CustomerId = 2,
                     CommentDate = DateTime.Parse("2005-11-05 16:15:48"),
                     MovieId = 2,
                     CommentContext = "我觉得这种电影确实不适合大众的口味，但是它却很适合我看"},
 
-                    new Comment {CommentId = 1,
+                    new Comment {CustomerId = 1,
                     CommentDate = DateTime.Parse("2005-11-05 18:47:22"),
                     MovieId = 1,
                     CommentContext = "大概会是今年唯一一部一个人看完的电影！有时候感动并不会流泪，是流淌在心中的温暖！！"},
 
-                    new Comment {CommentId = 1,
+                    new Comment {CustomerId = 1,
                     CommentDate = DateTime.Parse("2005-11-05 08:47:59"),
                     MovieId = 2,
                     CommentContext = "温柔了我岁月的人"},
 
-                    new Comment {CommentId = 2,
+                    new Comment {CustomerId = 2,
                     CommentDate = DateTime.Parse("2005-11-05 10:49:52"),
                     MovieId = 1,
                     CommentContext = "故事比较紧凑，很刺激，看的很爽手心都出汗了。"},
 
-                    new Comment {CommentId = 2,
+                    new Comment {CustomerId = 2,
                     CommentDate = DateTime.Parse("2005-11-05 19:18:47"),
                     MovieId = 2,
                     CommentContext = "非常赞，值得看！没有彩蛋，不用等啦"},
 
-                    new Comment {CommentId = 1,
+                    new Comment {CustomerId = 1,
                     CommentDate = DateTime.Parse("2005-11-07 07:22:12"),
                     MovieId = 1,
                     CommentContext = "好看真的好看，良心！"},
 
-                    new Comment {CommentId = 1,
+                    new Comment {CustomerId = 1,
                     CommentDate = DateTime.Parse("2005-11-03 14:32:15"),
                     MovieId = 2,
                     CommentContext = "太完美了，一部很令人舒服感动的电影，非常值得看"},
 
-                    new Comment {CommentId = 2,
+                    new Comment {CustomerId = 2,
                     CommentDate = DateTime.Parse("2005-11-15 22:18:39"),
                     MovieId = 1,
                     CommentContext = "很有意义的一部电影"},
 
-                    new Comment {CommentId = 2,
+                    new Comment {CustomerId = 2,
                     CommentDate = DateTime.Parse("2005-11-22 14:45:29"),
                     MovieId = 2,
                     CommentContext = "好看。。。。。"},
 
-                    new Comment {CommentId = 2,
+                    new Comment {CustomerId = 2,
                     CommentDate = DateTime.Parse("2005-12-13 03:35:16"),
                     MovieId = 2,
                     CommentContext = "好看 都不够看的 电影里的环境描写非常生动 很让人向往"},
 
-                    new Comment {CommentId = 2,
+                    new Comment {CustomerId = 2,
                     CommentDate = DateTime.Parse("2006-01-01 12:15:19"),
                     MovieId = 2,
                     CommentContext = "我还能说什么，太棒了。"},
 
-                    new Comment {CommentId = 2,
+                    new Comment {CustomerId = 2,
                     CommentDate = DateTime.Parse("2008-03-08 14:45:29"),
                     MovieId = 2,
                     CommentContext = "在有些人眼里，自己花了钱看电影，这电影不能做到世界第一那就是垃圾，然后给了1分"},
@@ -315,8 +315,8 @@ namespace MovieTheater.DataPrepare
                 foreach (var c in comments)
                 {
                     context.Comments.Add(c);
-                    context.SaveChanges();
                 }
+                context.SaveChanges();
             }
         }
     }

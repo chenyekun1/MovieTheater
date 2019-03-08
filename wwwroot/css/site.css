@@ -219,10 +219,10 @@ a:hover{
     font-size:25px;
     border-bottom:1px solid rgb(229, 229, 229);
 }
-.con_l div:nth-child(2){
+/*.con_l div:nth-child(2){
     height:87%;
     width:100%;
-}
+}*/
 /*主体_介绍E*/
 
 /*主体_相关资讯S*/
@@ -259,6 +259,7 @@ a:hover{
     height:70px;
     border-radius:20px;
     font-size:20px;
+    line-height:55px;
 }
 
 /*榜单页样式S*/
@@ -324,3 +325,120 @@ a:hover{
     color:rgb(255, 180, 0);
 }
 /*榜单页样式E*/
+
+
+.main{
+    position:relative;
+    margin-top:50px;
+}
+.main_hot{
+    width:630px;
+}
+.main_top{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 510px;
+    height: 657px;
+}
+.main_panel{
+    position:relative;
+}
+.pan_s1,.pan_s3{
+    font-size:40px;
+    color:red;
+}
+.pan_s3{
+    color:rgb(255, 192, 40);
+}
+.pan_a_more1,.pan_a_more3{
+    text-decoration:none;
+    position:absolute;
+    top:15px;
+    right:0;
+    display:inline-block;
+    width:70px;
+    height:25px;
+    font-size:20px;
+    background-image:url("images/9.png");
+    background-position:60px;
+    background-repeat:no-repeat;
+}
+.pan_a_more3{
+    background-image:url("images/11.png");
+    text-decoration:none;
+}
+.main_movie{
+    width:100%;
+    height:600px;
+}
+.main_movie dl dd{
+    width:160px;
+    height:240px;
+    display:inline-block;
+    margin: 30px 0 0 35px;
+}
+.main_movie dl dd a:nth-child(1){
+    position:relative;
+ }
+.main_movie dl dd a:nth-child(2){
+    display: block;
+    width: 160px;
+    height: 30px;
+    border:1px solid rgb(232, 232, 232);
+    text-align: center;
+    line-height: 26px;
+    color:rgb(255,110,110)
+}
+.main_movie_name{
+    position:absolute;
+    top:-100px;
+    width:160px;
+    height:220px;
+    background-image:url("../images/lay.jpg");
+    background-repeat:no-repeat;
+    background-position-y:bottom;
+}
+.main_movie_name span{
+    position: absolute;
+    bottom: 0;
+    margin-left: 10px;
+    color:white;
+}
+.side_panel{
+    position:relative;
+}
+.side_pan_more{
+    background-position:130px;
+}
+.main_top_list{
+    margin: 30px auto 0;
+    width:465px;
+}
+.main_top_list span{
+    color:red;
+    font-size:50px;
+}
+.main_top_list i{
+    color:#ffb400;
+    font-size:30px;
+}
+.comment_list{
+    height: 150px;
+    position:relative;
+}
+.user_head{
+    border-radius:50%;
+    overflow:hidden;
+    width:50px;
+    height:50px;
+}
+.comment_content{
+    position: absolute;
+    top: 0;
+    left: 70px;
+}
+.comment_content_date{
+    font-size:17px;
+
+}

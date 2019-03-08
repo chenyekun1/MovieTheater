@@ -21,7 +21,10 @@ namespace MovieTheater.ViewModel
         public async void
         LoadComments()
         {
-            var movie = await _context.Movies.FirstOrDefaultAsync(m => m.MovieId == Movie.MovieId);
+            var movie = await _context.Movies
+                                      .Include(m => m.Comments)
+                                        .ThenInclude(c => c.Customer)
+                                      .FirstOrDefaultAsync(m => m.MovieId == Movie.MovieId);
             var comments = movie.Comments.ToList();
 
             comments.Sort((x, y) => DateTime.Compare(x.CommentDate, y.CommentDate));

@@ -2,6 +2,8 @@ using MovieTheater.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using MovieTheater.Models;
+using System.Linq;
+using System;
 
 namespace MovieTheater.ViewModel
 {
@@ -20,7 +22,10 @@ namespace MovieTheater.ViewModel
         LoadComments()
         {
             var movie = await _context.Movies.FirstOrDefaultAsync(m => m.MovieId == Movie.MovieId);
-            Comments = movie.Comments;
+            var comments = movie.Comments.ToList();
+
+            comments.Sort((x, y) => DateTime.Compare(x.CommentDate, y.CommentDate));
+            Comments = comments;
         }
 
         public ICollection<Comment> Comments { get; private set; }

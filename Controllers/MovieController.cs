@@ -7,6 +7,7 @@ using System;
 using Microsoft.AspNetCore.Session;
 using Microsoft.AspNetCore.Http;
 using MovieTheater.ViewModel;
+using MovieTheater.Models;
 
 namespace MovieTheater.Controllers
 {
@@ -84,6 +85,25 @@ namespace MovieTheater.Controllers
 
             if (movie == null) return NotFound();
             return View(movieDetailsViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult>
+        PublicComment(string context, int movieId)
+        {
+            var userId = HttpContext.Session.GetInt32("user_id");
+            if (userId == null)
+                return RedirectToAction("Details", "Movie", new {id = movieId});
+
+            var comment = new Comment{CustomerId = userId.Value,
+                                      CommentDate = DateTime.Now,
+                                      CommentContext = context,
+                                      MovieId = movieId};
+
+            _context.Add(comment);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", "Movie", new {id = movieId});
         }
     }
 }

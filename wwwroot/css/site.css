@@ -215,14 +215,6 @@ a:hover{
     width:55%;
     margin-top:50px;
 }
-.con_l div:nth-child(1){
-    font-size:25px;
-    border-bottom:1px solid rgb(229, 229, 229);
-}
-/*.con_l div:nth-child(2){
-    height:87%;
-    width:100%;
-}*/
 /*主体_介绍E*/
 
 /*主体_相关资讯S*/
@@ -423,22 +415,93 @@ a:hover{
     color:#ffb400;
     font-size:30px;
 }
+.com{
+    height:auto;
+}
+.comment{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
 .comment_list{
-    height: 150px;
     position:relative;
+    margin-bottom:50px;
 }
 .user_head{
     border-radius:50%;
-    overflow:hidden;
+    height:50px;
+}
+.user_head img{
     width:50px;
     height:50px;
 }
+.user_head h3{
+    display:inline;
+}
 .comment_content{
-    position: absolute;
+    /*position: absolute;
     top: 0;
-    left: 70px;
+    left: 70px;*/
 }
 .comment_content_date{
     font-size:17px;
 
+}
+.signin {
+    position: absolute;
+    top: 0;
+    right:0;
+    width: 80px;
+    height: 50px;
+    border:1px solid transparent;
+    border-top:none;
+    border-bottom:none;
+    background-color:rgb(255, 255, 255);
+}
+.s_caret{
+    display:inline-block;
+    position:absolute;
+    top:25px;
+    right:12px;
+    border-bottom:5px solid #666;
+    border-left:5px solid transparent;
+    border-right:5px solid transparent;
+    transition:0.8s ease;
+}
+.signin:hover .s_caret{
+    transform:rotate(180deg);
+}
+.signin:hover {
+    border-left: 1px solid rgb(228, 228, 228);
+    border-right: 1px solid rgb(228, 228, 228);
+}
+.signin:hover .signin_add{
+    height:40px;
+}
+.signin_userimg{
+    position:relative;
+    top:10%;
+    left:10%;
+    width:40px;
+    height:40px;
+    cursor:pointer;
+}
+.signin_add {
+    overflow: hidden;
+    position: absolute;
+    top: 50px;
+    left: -1px;
+    width: 98px;
+    height: 0;
+    transition: 0.5s cubic-bezier(.21,-0.37,.75,1.36);
+    border: 1px solid rgb(228, 228, 228);
+    border-top: none;
+    background-color:white;
+    z-index:1;
+    text-align:center;
+}
+.signin_add_a{
+    font-size:17px;
+    color:rgb(177, 177, 177);
+    font-weight:500;
 }

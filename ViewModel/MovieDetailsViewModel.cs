@@ -28,6 +28,7 @@ namespace MovieTheater.ViewModel
             var comments = movie.Comments.ToList();
 
             comments.Sort((x, y) => DateTime.Compare(x.CommentDate, y.CommentDate));
+            comments.Reverse();
             Comments = comments;
         }
 

@@ -93,7 +93,7 @@ namespace MovieTheater.Controllers
         {
             var userId = HttpContext.Session.GetInt32("user_id");
             if (userId == null)
-                return RedirectToAction("Details", "Movie", new {id = movieId});
+                return RedirectToAction("CusLogin", "UserGate", new {id = movieId});
 
             var comment = new Comment{CustomerId = userId.Value,
                                       CommentDate = DateTime.Now,

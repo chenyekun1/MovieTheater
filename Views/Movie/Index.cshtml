@@ -4,9 +4,11 @@
         <div class="f1">
             <span>类型:</span>
             <ul>
+                <li><a asp-action="Index" asp-route-searchCountryString="@ViewData["CurrentCountryFilter"]">全部</a></li>
                 @foreach (var elem in ViewBag.movieCategory)
                 {
-                    <li><a asp-action="Index"
+                    <li>
+                        <a asp-action="Index"
                            asp-route-searchCategoryString="@elem.CategoryName"
                            asp-route-searchCountryString="@ViewData["CurrentCountryFilter"]">@elem.CategoryName</a></li>
                 }
@@ -16,9 +18,11 @@
             <div>
                 <span>国家:</span>
                 <ul>
+                    <li><a asp-action="Index" asp-route-searchCategoryString="@ViewData["CurrentCategoryFilter"]">全部</a></li>
                     @foreach (var elem in ViewBag.movieCountry)
                     {
-                        <li><a asp-action="Index"
+                        <li>
+                            <a asp-action="Index"
                                asp-route-searchCountryString="@elem.CountryName"
                                asp-route-searchCategoryString="@ViewData["CurrentCategoryFilter"]">@elem.CountryName</a></li>
                     }

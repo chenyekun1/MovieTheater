@@ -44,7 +44,13 @@
         <div>@Html.DisplayFor(model => model.Movie.MovieDescription)</div>
     </div>
     <!--左侧介绍E-->
-
+    <form method="post" asp-action="PublicComment">
+        <input type="hidden" name="movieId" value="@Model.Movie.MovieId"/>
+        <div class="con_l write_com">
+            <textarea class="write_com_content" name="context" placeholder="评论一下..."></textarea>
+            <input type="submit" value="确认" class="write_com_btn" />
+        </div>
+    </form>
     <!--左侧介绍S-->
     <!--左侧介绍E-->
     <div class="con_l com">

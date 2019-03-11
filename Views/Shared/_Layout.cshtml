@@ -34,8 +34,19 @@
                     <li><a asp-area="" asp-controller="Movie" asp-action="Index">电影</a></li>
                     <li><a asp-area="" asp-controller="Rank" asp-action="Index">排行榜</a></li>
                     <li><a asp-area="" asp-controller="Backend" asp-action="Index">后台管理</a></li>
-                    <li style="float:right;"><a asp-area="" asp-controller="UserGate" asp-action="ALogin">管理员登陆</a></li>
                 </ul>
+
+                <div class="signin_add_a_r">
+                    <a class="signin_add_a" href="#">退出</a>
+                    <a class="signin_add_a" asp-area="" asp-controller="UserGate" asp-action="ALogin">管理登录</a>
+                </div>
+                <div class="signin">
+                    <img class="signin_userimg" src="~/images/user.png" />
+                    <span class="s_caret"></span>
+                    <div class="signin_add">
+                        <a class="signin_add_a" asp-area="" asp-controller="UserGate" asp-action="CusLogin">用户登录</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>

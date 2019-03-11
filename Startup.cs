@@ -61,6 +61,7 @@ namespace MovieTheater
             app.UseSession();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

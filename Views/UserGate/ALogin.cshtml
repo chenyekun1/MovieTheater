@@ -5,6 +5,7 @@
 <div class="container">
     <div class="form row">
         <form asp-action="ALogIn" class="form-horizontal col-sm-offset-3 col-md-offset-3" id="ALogInForm" style="display:block;" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <h3 class="form-title">登录账号</h3>
             <div class="col-md-9">
                 <div class="form-group">

@@ -101,5 +101,14 @@ namespace MovieTheater.Controllers
             }
             return View(customer);
         }
+    
+        [HttpGet]
+        public IActionResult
+        SignOut()
+        {
+            HttpContext.Session.Remove("user_group");
+            HttpContext.Session.Remove("user_id");
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

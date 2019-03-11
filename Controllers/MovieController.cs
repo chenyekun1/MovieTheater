@@ -92,13 +92,13 @@ namespace MovieTheater.Controllers
         PublicComment(string context, int movieId)
         {
             var userId = HttpContext.Session.GetInt32("user_id");
-            if (userId == null)
+            if (userId == null || HttpContext.Session.GetString("user_group").Equals("admin"))
                 return RedirectToAction("CusLogin", "UserGate", new {id = movieId});
 
-            var comment = new Comment{CustomerId = userId.Value,
-                                      CommentDate = DateTime.Now,
+            var comment = new Comment{CustomerId     = userId.Value,
+                                      CommentDate    = DateTime.Now,
                                       CommentContext = context,
-                                      MovieId = movieId};
+                                      MovieId        = movieId};
 
             _context.Add(comment);
             await _context.SaveChangesAsync();

@@ -38,14 +38,20 @@ namespace MovieTheater.Controllers
             if (user == null) return View();
 
             HttpContext.Session.SetString("user_group", "admin");
+            HttpContext.Session.SetInt32("user_id", user.AdminId);
             return RedirectToAction("Index", "Backend");
         }
 
         public IActionResult
         CusLogin()
         {
-            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("user_group")))
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("user_group")) &&
+                !HttpContext.Session.GetString("user_group").Equals("admin"))
+            {
                 return RedirectToAction("Index", "Home");
+            }
+                
+            
             return View();
         }
 
